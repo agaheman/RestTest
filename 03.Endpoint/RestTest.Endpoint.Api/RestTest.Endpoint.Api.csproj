@@ -10,4 +10,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\01.Core\RestTest.Core.ApplicationService\RestTest.Core.ApplicationService.csproj" />
+    <ProjectReference Include="..\..\01.Core\RestTest.Core.Contract\RestTest.Core.Contract.csproj" />
+    <ProjectReference Include="..\..\01.Core\RestTest.Core.Domain\RestTest.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\02.Infra\RestTest.Infra.Data.Sql.Command\RestTest.Infra.Data.Sql.Command.csproj" />
+    <ProjectReference Include="..\..\02.Infra\RestTest.Infra.Data.Sql.Query\RestTest.Infra.Data.Sql.Query.csproj" />
+  </ItemGroup>
+
 </Project>
