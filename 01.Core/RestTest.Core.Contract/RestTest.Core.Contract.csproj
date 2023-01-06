@@ -10,4 +10,10 @@
     <ProjectReference Include="..\RestTest.Core.Domain\RestTest.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.37.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+  </ItemGroup>
+  
 </Project>

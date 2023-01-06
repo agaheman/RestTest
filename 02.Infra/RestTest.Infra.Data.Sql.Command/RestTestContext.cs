@@ -3,12 +3,18 @@ using RestTest.Core.Domain.Employees.Entities;
 
 namespace RestTest.Infra.Data.Sql.Command;
 
-public class RestTestContext1 : DbContext
+public class RestTestContext : DbContext
 {
-    public RestTestContext1(DbContextOptions<RestTestContext1> options)
+    public RestTestContext(DbContextOptions<RestTestContext> options)
         : base(options)
     {
     }
 
     public DbSet<Employee> Employee { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+    }
 }
