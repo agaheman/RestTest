@@ -3,9 +3,9 @@ using RestTest.Core.Domain.Employees.Entities;
 
 namespace RestTest.Infra.Data.Sql.Command;
 
-public class RestTestContext : DbContext
+public class RestTestCommandContext : DbContext
 {
-    public RestTestContext(DbContextOptions<RestTestContext> options)
+    public RestTestCommandContext(DbContextOptions<RestTestCommandContext> options)
         : base(options)
     {
     }

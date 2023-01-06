@@ -22,6 +22,7 @@ namespace RestTest.Infra.Data.Sql.Command.Employees.Configurations
             #region SampleData
             var Taher = new Employee
             {
+                Id= 1,
                 FirstName = "Taher",
                 LastName = "Samadi",
                 Email = "TaherSamadi@gmail.com",
@@ -34,18 +35,20 @@ namespace RestTest.Infra.Data.Sql.Command.Employees.Configurations
             };
             var AmirHossein = new Employee
             {
+                Id=2,
                 FirstName = "AmirHossein",
                 LastName = "Lesani",
                 Email = "AmirHosseinLesani@gmail.com",
                 NationalCode = 2660039993,
                 Notes = new List<Note>
                 {
-                new Note { Content = "Veronic1", Published = true },
-                new Note { Content = "Veronic2", Published = true }
+                    new Note { Content = "Veronic1", Published = true },
+                    new Note { Content = "Veronic2", Published = true }
                 }
             };
             var Nima = new Employee
             {
+                Id = 3,
                 FirstName = "Nima",
                 LastName = "Khandabi",
                 Email = "NimaKhandabi@gmail.com",

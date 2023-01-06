@@ -1,8 +1,4 @@
-﻿namespace ModuleDefinitions;
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using System.Reflection;
 
 public interface IModuleDefinition
 {

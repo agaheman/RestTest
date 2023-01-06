@@ -5,9 +5,9 @@ namespace RestTest.Infra.Data.Sql.Command.Employees.Repositories
 {
     public class EmployeeCommandRepository : IEmployeeCommandRepository
     {
-        private readonly RestTestContext restTestContext;
+        private readonly RestTestCommandContext restTestContext;
 
-        public EmployeeCommandRepository(RestTestContext restTestContext)
+        public EmployeeCommandRepository(RestTestCommandContext restTestContext)
         {
             this.restTestContext = restTestContext;
         }
