@@ -24,7 +24,9 @@ public class GetEmployeeByIdQueryHandler :
     {
         var validationResult = await _getEmployeeByIdQueryValidator.ValidateAsync(getEmployeeByIdQuery, cancellationToken);
 
-        var repoResult = await _employeeQueryRepository.ExecuteAsync(getEmployeeByIdQuery, cancellationToken);
+        var repoResult = validationResult.IsValid 
+            ? await _employeeQueryRepository.ExecuteAsync(getEmployeeByIdQuery, cancellationToken) 
+            : default;
 
         return Extensions.CreateResult(repoResult, validationResult);
     }

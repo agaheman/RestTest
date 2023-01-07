@@ -24,7 +24,7 @@ public class CreateEmployeeCommandHandler :
     {
         var validationResult = await _createEmployeeCommandValidator.ValidateAsync(createEmployeeCommand, cancellationToken);
 
-        var repoResult = await _employeeCommandRepository.ExecuteAsync(createEmployeeCommand, cancellationToken);
+        int repoResult = validationResult.IsValid ? await _employeeCommandRepository.ExecuteAsync(createEmployeeCommand, cancellationToken) : default;
 
         return Extensions.CreateResult(repoResult, validationResult);
     }
