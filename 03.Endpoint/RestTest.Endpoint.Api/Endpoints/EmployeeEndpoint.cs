@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ModuleDefinitions;
 using RestTest.Core.ApplicationService.Employees.Commands.Create;
 using RestTest.Core.Contract.Employees.Commands;
 using RestTest.Core.Contract.Employees.Commands.Create;
@@ -19,14 +19,26 @@ public class EmployeeEndpoint : IModuleDefinition
 
     public void UseModules(WebApplication app)
     {
-        app.MapPost("/CreateRequest", async ([FromBody] CreateEmployeeCommand createRequest, [FromServices] IMediator mediator) =>
+        app.MapPost("/Employee", async ([FromBody] CreateEmployeeCommand createRequest, [FromServices] IMediator mediator) =>
         {
-            var serviceResult = await mediator.Send<Result<int, FluentValidation.Results.ValidationResult>>(createRequest);
+            var serviceResult = await mediator.Send<Result<int, ValidationResult>>(createRequest);
+
+            return serviceResult.IsSuccess
+            ? Results.StatusCode(StatusCodes.Status201Created)
+            : Results.ValidationProblem(serviceResult.Error.ToDictionary());
+        })
+            .Produces(StatusCodes.Status201Created)
+            .Produces(StatusCodes.Status400BadRequest);
+
+
+        app.MapGet("/Employee/Id", async ([FromRoute] CreateEmployeeCommand createRequest, [FromServices] IMediator mediator) =>
+        {
+            var serviceResult = await mediator.Send<Result<int, ValidationResult>>(createRequest);
 
             return serviceResult.IsSuccess
             ? Results.CreatedAtRoute("GetEmployeeById", routeValues: new { id = serviceResult.Value }, value: serviceResult.Value)
             : Results.ValidationProblem(serviceResult.Error.ToDictionary());
         })
-         .WithName("CreateMethod");
+         .WithName("GetEmployeeById");
     }
 }
