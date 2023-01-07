@@ -45,8 +45,22 @@ public class EmployeeEndpoint : IModuleDefinition
          .Produces(StatusCodes.Status200OK)
          .Produces(StatusCodes.Status404NotFound)
          .Produces(StatusCodes.Status400BadRequest);
+
+        app.MapPut("/todoitems/{id}", async (int id) =>
+        {
+           //if (todo is null) return Results.NotFound();
+
+            return Results.NoContent();
+        })
+          .Produces(StatusCodes.Status204NoContent)
+          .Produces(StatusCodes.Status404NotFound);
+
+        app.MapDelete("/todoitems/{id}", async (int id) =>
+        {
+            //return Results.Ok(new TodoItemDTO(todo));
+            return Results.NotFound();
+        })
+         .Produces(StatusCodes.Status200OK)
+         .Produces(StatusCodes.Status404NotFound);
     }
-
-
-
 }
